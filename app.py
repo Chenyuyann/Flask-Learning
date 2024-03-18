@@ -1,11 +1,23 @@
-from flask import Flask, url_for
+from flask import Flask, url_for, render_template
 from markupsafe import escape
 
 app = Flask(__name__)
 
+name = 'Chen'
+musiclists = [
+    {'title': 'Latata', 'year': '2018'},
+    {'title': 'TOMBOY', 'year': '2022'},
+    {'title': 'Villain dies', 'year': '2022'},
+    {'title': 'ESCAPE', 'year': '2022'},
+    {'title': 'Nxde', 'year': '2022'},
+    {'title': 'Queencard', 'year': '2023'},
+    {'title': 'Paradise', 'year': '2023'},
+    {'title': 'Fate', 'year': '2024'},
+]
+
 @app.route('/')
-def hello():
-    return 'Hello'
+def index():
+    return render_template('index.html', name=name, musiclists=musiclists)
 
 @app.route('/user/<name>')
 def user_page(name):

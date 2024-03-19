@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{{ name }}'s Musiclist</title>
+    <title>{{ user.name }}'s Musiclist</title>
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
 </head>
 <body>
     <h2>
         <img alt="title" class="title" src="{{ url_for('static', filename='images/title.jpg') }}">
-        {{ name }}'s Musiclist
+        {{ user.name }}'s Musiclist
     </h2>
     {# 使用 length 过滤器获取 musiclists 变量的长度 #}
     <p>{{ musiclists|length }} Titles</p>
     <ul class="music-list">
-        {% for movie in musiclists %}  {# 迭代 musiclists 变量 #}
-        <li>{{ movie.title }} - {{ movie.year }}</li>  {# 等同于 movie['title'] #}
+        {% for music in musiclists %}  {# 迭代 musiclists 变量 #}
+        <li>{{ music.title }} - {{ music.year }}</li>  {# 等同于 music['title'] #}
         {% endfor %}  {# 使用 endfor 标签结束 for 语句 #}
     </ul>
     <img alt="minnie-kiss" class="kiss" src="{{ url_for('static', filename='images/minnie-kiss.gif') }}">
